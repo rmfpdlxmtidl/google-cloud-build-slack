@@ -2,7 +2,7 @@ service: gcb-slack
 
 provider:
   name: google
-  runtime: nodejs8
+  runtime: nodejs14
   project: ${env:PROJECT_ID}
   credentials: ~/.gcloud/keyfile.json # path must be absolute
 
