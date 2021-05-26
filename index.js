@@ -121,29 +121,25 @@ module.exports.createSlackMessage = async (build, githubCommit) => {
   if (repoName && branchName) {
     message.attachments[0].fields.push({
       title: 'Repository',
-      value: repoName,
+      value: `branch \`${branchName}\` of \`${repoName}\``,
     });
 
-    message.attachments[0].fields.push({
-      title: 'Branch',
-      value: branchName,
-    });
-
-    if (githubCommit) {
-      message.attachments[0].fields.push({
-        title: 'Commit Author',
-        value: githubCommit.data.author.name,
-      });
-    }
+    // if (githubCommit.data) {
+    //   message.attachments[0].fields.push({
+    //     title: 'Commit Author',
+    //     value: githubCommit.data.author.name,
+    //   });
+    // }
   }
 
-  // Add image(s) to the message.
-  const images = build.images || [];
-  if (images.length) {
-    message.attachments[0].fields.push({
-      title: `Image${(images.length > 1) ? 's' : ''}`,
-      value: images.join('\n'),
-    });
-  }
+  // // Add image(s) to the message.
+  // const images = build.images || [];
+  // if (images.length) {
+  //   message.attachments[0].fields.push({
+  //     title: `Image${(images.length > 1) ? 's' : ''}`,
+  //     value: images.join('\n'),
+  //   });
+  // }
+  
   return message;
 };
