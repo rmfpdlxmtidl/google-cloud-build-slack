@@ -4,22 +4,22 @@ Slack integration for Google Cloud Build, using Google Cloud Functions to post m
 
 ## Setup
 
-1. Create a Slack app, and copy the webhook URL:
+1. Create a Slack app, and copy the webhook URL: https://api.slack.com/apps
 
 ```shell
-> export SLACK_WEBHOOK_URL=my-slack-webhook-url
+> export SLACK_WEBHOOK_URL=
 ```
 
 2. Set the `PROJECT_ID` variable:
 
 ```shell
-> export PROJECT_ID=my-project-id
+> export PROJECT_ID=
 ```
 
 3. [Optionally] Set a github token to obtain github commit author info in slack messages if applicable. Please refer to the [current limitations](#limitations).
 
 ```shell
-> export GITHUB_TOKEN=my-token
+> export GITHUB_TOKEN=
 ```
 
 4. [Optionally] Set the status you want a message for, here are the default ones:
@@ -28,11 +28,7 @@ Slack integration for Google Cloud Build, using Google Cloud Functions to post m
 > export GC_SLACK_STATUS="SUCCESS FAILURE TIMEOUT INTERNAL_ERROR"
 ```
 
-5. Create the function with [setup.sh (Option 1)](#script) OR [serverless framework (Option 2)](#serverless)
-
-<a name="script"/></a>
-
-### Option 1: Deploy with script
+5. Create the function with `setup.sh`
 
 - [Optionally] Set a specific `BUCKET_NAME` and a `FUNCTION_NAME`.
 - Create the function:
@@ -43,27 +39,7 @@ Slack integration for Google Cloud Build, using Google Cloud Functions to post m
 npm run setup
 ```
 
-<a name="serverless"/></a>
-
-### Option 2: Deploy with serverless framework
-
-1. Install `serverless`
-
-```
-npm install serverless -g
-```
-
-2. Ensure that the value of `project.credentials` in `serverless.yml` points to [credentials with appropriate roles Serverless can use to create resources in your Project](https://serverless.com/framework/docs/providers/google/guide/credentials#get-credentials--assign-roles).
-
-3. [Deploy](https://serverless.com/framework/docs/providers/google/cli-reference/deploy/)
-
-```
-serverless deploy
-```
-
 ## Teardown
-
-### If deployed with script
 
 The teardown script will delete the function `FUNCTION_NAME`, and the bucket `BUCKET_NAME`.
 
@@ -71,14 +47,6 @@ The teardown script will delete the function `FUNCTION_NAME`, and the bucket `BU
 . ./teardown.sh
 # OR
 npm run teardown
-```
-
-### If deployed with serverless framework
-
-[Remove](https://serverless.com/framework/docs/providers/google/cli-reference/remove/)
-
-```
-serverless remove
 ```
 
 ## FAQ
