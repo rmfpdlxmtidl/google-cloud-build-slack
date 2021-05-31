@@ -34,9 +34,7 @@ Slack integration for Google Cloud Build, using Google Cloud Functions to post m
 - Create the function:
 
 ```
-. ./setup.sh
-# OR
-npm run setup
+./setup.sh
 ```
 
 ## Teardown
@@ -44,10 +42,10 @@ npm run setup
 The teardown script will delete the function `FUNCTION_NAME`, and the bucket `BUCKET_NAME`.
 
 ```
-. ./teardown.sh
-# OR
-npm run teardown
+./teardown.sh
 ```
+
+Cloud Storage, Cloud Function 에 있는 거 지우기
 
 ## FAQ
 

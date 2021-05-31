@@ -75,13 +75,10 @@ module.exports.createSlackMessage = async (build, githubCommit) => {
   const timestamp = Math.round(((isWorking) ? buildStartTime : buildFinishTime).getTime() / 1000);
 
   const text = (isWorking)
-    ? `Build \`${build.id}\` started`
-    : `Build \`${build.id}\` finished`;
+    ? `Build \`${build.id}\` \`STARTED\``
+    : `Build \`${build.id}\` \`${build.status}\``;
 
-  const fields = [{
-    title: 'Status',
-    value: build.status,
-  }];
+  const fields = [{}];
 
   if (!isWorking) {
     const buildTime = humanizeDuration(buildFinishTime - buildStartTime);
