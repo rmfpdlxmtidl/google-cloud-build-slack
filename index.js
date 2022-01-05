@@ -76,7 +76,7 @@ module.exports.createSlackMessage = async (build, githubCommit) => {
 
   const text = (isWorking)
     ? `Build \`${build.id}\` \`STARTED\``
-    : `Build \`${build.id}\` \`${build.status}\``;
+    : `Build \`${build.id}\` ${build.status}`;
 
   const fields = [{}];
 
